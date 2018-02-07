@@ -1,0 +1,366 @@
+{
+  "$id": "1",
+  "Dimensions": {
+    "x": 200,
+    "y": 200
+  },
+  "WaterLevel": 40,
+  "Height": 80,
+  "Module": {
+    "$id": "2",
+    "$type": "SharpNoise.Modules.Clamp, SharpNoise",
+    "LowerBound": -1.0,
+    "UpperBound": 1.0,
+    "Source0": {
+      "$id": "3",
+      "$type": "Eco.WorldGenerator.SeamlessNoise, Eco.WorldGenerator",
+      "Source": {
+        "$id": "4",
+        "$type": "SharpNoise.Modules.Select, SharpNoise",
+        "EdgeFalloff": 0.3,
+        "LowerBound": 0.4,
+        "UpperBound": 1.0,
+        "Source0": {
+          "$id": "5",
+          "$type": "SharpNoise.Modules.Clamp, SharpNoise",
+          "LowerBound": -1.0,
+          "UpperBound": 0.4,
+          "Source0": {
+            "$id": "6",
+            "$type": "SharpNoise.Modules.Perlin, SharpNoise",
+            "Frequency": 3.0,
+            "Lacunarity": 2.0,
+            "OctaveCount": 6,
+            "Persistence": 0.5,
+            "Quality": "Standard",
+            "Seed": 495896595
+          }
+        },
+        "Source1": {
+          "$id": "7",
+          "$type": "SharpNoise.Modules.ScaleBias, SharpNoise",
+          "Source0": {
+            "$id": "8",
+            "$type": "SharpNoise.Modules.Billow, SharpNoise",
+            "Frequency": 5.0,
+            "Lacunarity": 2.0,
+            "Quality": "Standard",
+            "OctaveCount": 6,
+            "Persistence": 0.5,
+            "Seed": 1016174585
+          },
+          "Bias": 0.8,
+          "Scale": 1.0
+        },
+        "Control": {
+          "$ref": "5"
+        }
+      }
+    }
+  },
+  "Plateau": {
+    "$id": "9",
+    "CliffStopsBeingSheerAtAngle": 0.5,
+    "CliffSheernessStartInterpolate": 1.6,
+    "MinPlateauHeight": -0.1,
+    "CliffChance": 0.8,
+    "RadiusRange": {
+      "min": 8.0,
+      "max": 16.0
+    },
+    "SlopeRange": {
+      "min": 3.0,
+      "max": 6.0
+    },
+    "RadiusNoiseFreq": 1.2,
+    "SplitPercentHeight": 0.7,
+    "StartSplittingAtRadiusPercent": 0.7,
+    "MinHeightToCarveUndercut": 2.0,
+    "OverhangChance": 0.5,
+    "MarkWithBlockType": {
+      "Type": null
+    }
+  },
+  "Crater": {
+    "$id": "10",
+    "Frequency": 0.0,
+    "RadiusRange": {
+      "min": 5.0,
+      "max": 50.0
+    },
+    "DepthRange": {
+      "min": 0.1,
+      "max": 0.5
+    }
+  },
+  "AllowRivers": true,
+  "AllowPlateaus": true,
+  "FrequencyScale": 1.0,
+  "TerrainModule": {
+    "$id": "11",
+    "Name": "World",
+    "Modules": [
+      {
+        "$id": "12",
+        "$type": "Eco.WorldGenerator.SimpleTerrainModule, Eco.WorldGenerator",
+        "HeightRange": {
+          "min": -0.05,
+          "max": 0.0
+        },
+        "DepthRange": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "Default": {
+          "Type": "Eco.World.Blocks.SandBlock, Eco.World"
+        },
+        "Name": "Shoreline",
+        "Modules": []
+      },
+      {
+        "$id": "13",
+        "$type": "Eco.WorldGenerator.SimpleTerrainModule, Eco.WorldGenerator",
+        "HeightRange": {
+          "min": -1.0,
+          "max": 1.0
+        },
+        "DepthRange": {
+          "min": 0.0,
+          "max": 0.1
+        },
+        "Default": {
+          "Type": "Eco.World.Blocks.DirtBlock, Eco.World"
+        },
+        "Name": "Surface",
+        "Modules": [
+          {
+            "$id": "14",
+            "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+            "NoiseRange": {
+              "min": 0.6,
+              "max": 1.0
+            },
+            "NoiseFrequency": 40.0,
+            "NoiseSeed": 647626573,
+            "HeightRange": {
+              "min": -1.0,
+              "max": 1.0
+            },
+            "DepthRange": {
+              "min": 0.0,
+              "max": 1.0
+            },
+            "Default": {
+              "Type": "Eco.Mods.TechTree.StoneBlock, Eco.Mods"
+            },
+            "Name": null,
+            "Modules": [
+              {
+                "$id": "15",
+                "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+                "NoiseRange": {
+                  "min": 0.4,
+                  "max": 1.0
+                },
+                "NoiseFrequency": 25.0,
+                "NoiseSeed": 1231632737,
+                "HeightRange": {
+                  "min": -1.0,
+                  "max": 1.0
+                },
+                "DepthRange": {
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "Default": {
+                  "Type": "Eco.Mods.TechTree.CoalBlock, Eco.Mods"
+                },
+                "Name": null,
+                "Modules": []
+              },
+              {
+                "$id": "16",
+                "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+                "NoiseRange": {
+                  "min": 0.4,
+                  "max": 1.0
+                },
+                "NoiseFrequency": 30.0,
+                "NoiseSeed": 149447764,
+                "HeightRange": {
+                  "min": -1.0,
+                  "max": 1.0
+                },
+                "DepthRange": {
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "Default": {
+                  "Type": "Eco.Mods.TechTree.IronOreBlock, Eco.Mods"
+                },
+                "Name": null,
+                "Modules": []
+              },
+              {
+                "$id": "17",
+                "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+                "NoiseRange": {
+                  "min": 0.5,
+                  "max": 1.0
+                },
+                "NoiseFrequency": 35.0,
+                "NoiseSeed": 1129059613,
+                "HeightRange": {
+                  "min": -1.0,
+                  "max": 1.0
+                },
+                "DepthRange": {
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "Default": {
+                  "Type": "Eco.Mods.TechTree.CopperOreBlock, Eco.Mods"
+                },
+                "Name": null,
+                "Modules": []
+              },
+              {
+                "$id": "18",
+                "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+                "NoiseRange": {
+                  "min": 0.5,
+                  "max": 1.0
+                },
+                "NoiseFrequency": 40.0,
+                "NoiseSeed": 760819139,
+                "HeightRange": {
+                  "min": -1.0,
+                  "max": 1.0
+                },
+                "DepthRange": {
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "Default": {
+                  "Type": "Eco.Mods.TechTree.GoldOreBlock, Eco.Mods"
+                },
+                "Name": null,
+                "Modules": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "$id": "19",
+        "$type": "Eco.WorldGenerator.SimpleTerrainModule, Eco.WorldGenerator",
+        "HeightRange": {
+          "min": -1.0,
+          "max": 1.0
+        },
+        "DepthRange": {
+          "min": 0.1,
+          "max": 0.8
+        },
+        "Default": {
+          "Type": "Eco.Mods.TechTree.StoneBlock, Eco.Mods"
+        },
+        "Name": "Underground",
+        "Modules": [
+          {
+            "$id": "20",
+            "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+            "NoiseRange": {
+              "min": 0.4,
+              "max": 1.0
+            },
+            "NoiseFrequency": 15.0,
+            "NoiseSeed": 76426676,
+            "HeightRange": {
+              "min": -1.0,
+              "max": 1.0
+            },
+            "DepthRange": {
+              "min": 0.0,
+              "max": 1.0
+            },
+            "Default": {
+              "Type": "Eco.Mods.TechTree.IronOreBlock, Eco.Mods"
+            },
+            "Name": "Iron",
+            "Modules": []
+          },
+          {
+            "$id": "21",
+            "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+            "NoiseRange": {
+              "min": 0.4,
+              "max": 1.0
+            },
+            "NoiseFrequency": 15.0,
+            "NoiseSeed": 2050889203,
+            "HeightRange": {
+              "min": -1.0,
+              "max": 1.0
+            },
+            "DepthRange": {
+              "min": 0.0,
+              "max": 1.0
+            },
+            "Default": {
+              "Type": "Eco.Mods.TechTree.CoalBlock, Eco.Mods"
+            },
+            "Name": "Coal",
+            "Modules": []
+          },
+          {
+            "$id": "22",
+            "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+            "NoiseRange": {
+              "min": 0.5,
+              "max": 1.0
+            },
+            "NoiseFrequency": 20.0,
+            "NoiseSeed": 527407499,
+            "HeightRange": {
+              "min": -1.0,
+              "max": 1.0
+            },
+            "DepthRange": {
+              "min": 0.0,
+              "max": 1.0
+            },
+            "Default": {
+              "Type": "Eco.Mods.TechTree.CopperOreBlock, Eco.Mods"
+            },
+            "Name": "Copper",
+            "Modules": []
+          },
+          {
+            "$id": "23",
+            "$type": "Eco.WorldGenerator.StandardTerrainModule, Eco.WorldGenerator",
+            "NoiseRange": {
+              "min": 0.5,
+              "max": 1.0
+            },
+            "NoiseFrequency": 30.0,
+            "NoiseSeed": 858781799,
+            "HeightRange": {
+              "min": -1.0,
+              "max": 1.0
+            },
+            "DepthRange": {
+              "min": 0.0,
+              "max": 1.0
+            },
+            "Default": {
+              "Type": "Eco.Mods.TechTree.GoldOreBlock, Eco.Mods"
+            },
+            "Name": "Gold",
+            "Modules": []
+          }
+        ]
+      }
+    ]
+  }
+}
