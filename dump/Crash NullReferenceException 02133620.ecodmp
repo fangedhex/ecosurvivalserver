@@ -1,0 +1,10 @@
+--BEGIN DUMP--
+Dump Time
+02/13/2018 08:36:20
+
+Exception
+System.NullReferenceException: Object reference not set to an instance of an object
+  at Eco.Server.Startup.Start (System.String[] args) [0x000a6] in <f33353033fa040cdbf02f73164d24c28>:0 
+  at Eco.Server.MainClass.Main (System.String[] args) [0x00005] in <f33353033fa040cdbf02f73164d24c28>:0 
+
+--END DUMP--
