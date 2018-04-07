@@ -1,0 +1,23 @@
+{
+	"name": "ecosurvivalserver",
+	"version": "1.0.0",
+	"description": "https://www.strangeloopgames.com/eco/",
+	"main": "src/index.ts",
+	"scripts": {
+		"compile": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Fanged-Hex/EcoSurvivalServer.git"
+	},
+	"author": "Sylvain VISTE",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/Fanged-Hex/EcoSurvivalServer/issues"
+	},
+	"homepage": "https://github.com/Fanged-Hex/EcoSurvivalServer#readme",
+	"devDependencies": {
+		"typescript": "^2.8.1"
+	}
+}
