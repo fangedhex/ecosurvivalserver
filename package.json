@@ -18,6 +18,14 @@
 	},
 	"homepage": "https://github.com/Fanged-Hex/EcoSurvivalServer#readme",
 	"devDependencies": {
+		"@types/node": "^9.6.2",
+		"@types/request-promise-native": "^1.0.14",
+		"@types/xml2json": "^0.10.0",
 		"typescript": "^2.8.1"
+	},
+	"dependencies": {
+		"request": "^2.85.0",
+		"request-promise-native": "^1.0.5",
+		"xml2json": "^0.11.2"
 	}
 }
