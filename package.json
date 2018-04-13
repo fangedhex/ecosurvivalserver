@@ -24,6 +24,7 @@
 		"typescript": "^2.8.1"
 	},
 	"dependencies": {
+		"@octoblu/docker-hub-api": "^1.0.2",
 		"request": "^2.85.0",
 		"request-promise-native": "^1.0.5",
 		"xml2json": "^0.11.2"
