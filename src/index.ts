@@ -2,6 +2,7 @@ import {get as HttpGet} from "request-promise-native";
 import {toJson} from "xml2json";
 import {execSync} from "child_process";
 import * as DockerHub from "@octoblu/docker-hub-api";
+import { CronJob } from "cron";
 
 interface AwsData
 {
@@ -16,11 +17,14 @@ interface AwsData
 DockerHub.login(process.env.HUB_LOGIN, process.env.HUB_PASS);
 execSync(`docker login -u ${process.env.HUB_LOGIN} -p ${process.env.HUB_PASS}`, {stdio: [0,1,2]});
 
-// Main program
-console.log("Getting tags from Docker Hub ...");
-DockerHub.tags("fangedhex", "ecosurvivalserver").then(data => {
-    buildUp(data);
+let cronJob = new CronJob("0 0 * * * *", () => {
+    // Main program
+    console.log("Getting tags from Docker Hub ...");
+    DockerHub.tags("fangedhex", "ecosurvivalserver").then(data => {
+        buildUp(data);
+    });
 });
+cronJob.start();
 
 function versionExists(version, hubData)
 {
@@ -75,7 +79,7 @@ function buildUp(hubData)
         });
         
         if(latest_tag != "")
-        {
+        {            
             execSync(`docker tag fangedhex/ecosurvivalserver:${latest_tag} fangedhex/ecosurvivalserver:latest`, {stdio: [0,1,2]});
             execSync(`docker push fangedhex/ecosurvivalserver:latest`, {stdio: [0,1,2]});
         }
