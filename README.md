@@ -9,16 +9,6 @@ https://hub.docker.com/r/fangedhex/ecosurvivalserver/
 ```
 docker run -d -p 2999:2999/udp -p 3000-3001:3000-3001 -v <storageDirOnHost>:/app/Storage fangedhex/ecosurvivalserver
 ```
-It will run Eco Server on 0.7.2.5-beta version
+It will run Eco Server on latest version (if my bot pushed the latest version as intended)
 
-## Custom eco version
-
-First, check if there is no tag for the version you want on Docker Hub.
-
-If not you can build, the version you want directly from my repository like this :
-
-```
-docker build -t ecosurvivalserver --build-arg ECO_VERSION=0.7.2.4-beta https://github.com/Fanged-Hex/EcoSurvivalServer.git
-```
-
-Replace 0.7.2.4-beta by the version you want :)
+If a version is not pushed into Docker Hub, don't hesitate to create a issue about it, maybe my bot didn't push it yet or maybe it just crashed (not supposed to happen) !
