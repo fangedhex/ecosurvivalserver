@@ -21,11 +21,13 @@ GetTags().then((data) => {
             let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
             console.log("Waiting until " + next + "(UTC)");
         });
-    });
-    cronJob.start();    
+    });      
 
-    let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    console.log("Waiting until " + next + "(UTC)"); 
+    buildUp().then(() => {
+        cronJob.start();
+        let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+        console.log("Waiting until " + next + "(UTC)");
+    });     
 });
 
 
