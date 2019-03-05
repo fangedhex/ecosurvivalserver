@@ -2,7 +2,7 @@ FROM mono
 LABEL maintainer "Sylvain VISTE <viste.sylvain@gmail.com>"
 ARG ECO_VERSION=0.7.2.5-beta
 RUN apt-get update && \
-apt-get install -y wget unzip && \
+apt-get install -y wget unzip gdb lldb && \
 rm -rf /var/cache/apt /var/lib/apt/lists
 EXPOSE 2999/udp 3000 3001
 WORKDIR /app
