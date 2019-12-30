@@ -4,6 +4,9 @@ https://www.strangeloopgames.com/eco/
 
 https://hub.docker.com/r/fangedhex/ecosurvivalserver/
 
+## Note
+I'm currently to busy to update this "project" and I'm also not currently playing this game so I'm not able to see if an update is done or not. So you can fork it if you want to update it.
+
 ## How to launch
 
 ```
